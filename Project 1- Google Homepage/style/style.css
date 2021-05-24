@@ -1,0 +1,39 @@
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.f1_container,
+.f2_container,
+.f3_container {
+  background: #f2f2f2;
+  padding: 1rem;
+  color: #70757a;
+}
+
+.f1_container,
+.f2_container > a,
+.f3_container > a {
+  background: #f2f2f2;
+  padding: 1rem;
+  color: #70757a;
+  text-decoration: none;
+}
+
+.f1_container {
+  border-bottom: 1px solid #e0e1e4;
+}
+
+.searchbar {
+  border: 1px solid black;
+  width: 30%;
+  height: 2em;
+}
+
+footer {
+  font-family: arial, sans-serif;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
