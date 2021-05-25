@@ -16,7 +16,7 @@ html {
   font-size: 62.5%;
 }
 
-/* FOOTER STYLING (ALMOST DONE) */
+/* FOOTER STYLING */
 
 .f2_container {
   display: flex;
@@ -177,7 +177,7 @@ main {
   justify-content: flex-start;
   align-items: center;
   border: 1px solid #dadce0;
-  margin-bottom: 2rem;
+  margin-bottom: 2.8rem;
 }
 
 .searchbar:hover {
