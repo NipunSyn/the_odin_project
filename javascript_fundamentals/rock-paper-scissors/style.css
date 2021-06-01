@@ -40,3 +40,11 @@
   cursor: pointer;
   box-shadow: rgba(103, 32, 184, 0.7) 0px 5px 15px;
 }
+
+#humanDiv {
+  box-shadow: rgba(88, 247, 154, 0.35) 0px 5px 15px;
+}
+
+#botDiv {
+  box-shadow: rgb(196, 50, 50) 0px 5px 15px;
+}
