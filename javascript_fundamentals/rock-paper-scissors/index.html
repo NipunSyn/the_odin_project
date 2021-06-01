@@ -4,11 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors</title>
+    <title>Beat The Mouse</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Rock Paper Scissors</h1>
-    <p>Please go to the console and type game() to start playing</p>
     <script src="./external.js"></script>
+
+    <section>
+      <div class="heading flex">
+        <div class="text-box">
+          <h1>Can you beat Mickey?</h1>
+          <p>
+            Mickey Mouse has challenged you to a game of Rock Paper Scissors.
+            <br />
+            You get five rounds. Can you beat him?
+          </p>
+        </div>
+        <div class="img-box">
+          <img src="#" alt="Mickey Mouse" />
+        </div>
+      </div>
+      <div class="console flex" id="console-div">
+        <img
+          src="./images/rock.png"
+          alt="rock"
+          id="rock"
+          onclick="rpsGame(this)"
+          width="150px"
+          height="150px"
+        />
+        <img
+          src="./images/paper.png"
+          alt="paper"
+          id="paper"
+          onclick="rpsGame(this)"
+          width="150px"
+          height="150px"
+        />
+        <img
+          src="./images/scissors.png"
+          alt="scissors"
+          id="scissors"
+          onclick="rpsGame(this)"
+          width="150px"
+          height="150px"
+        />
+      </div>
+      <div class="results flex">
+        <h1>Wins: <span id="wins">0</span></h1>
+        <h1>Draws: <span id="draws">0</span></h1>
+        <h1>Losses: <span id="losses">0</span></h1>
+      </div>
+    </section>
   </body>
 </html>
