@@ -3,20 +3,20 @@
 // Get the final message from the result
 // Change the frontend using the message and user choices
 
-//todo make sure that the rock paper scissors game doesn't work before you press play
 //todo on every iteration, update the wins, losses, and draws
 //todo the function that will loop the game five times
 //todo after the game gets over, display the winner and reset the game (make play -> play again)
 
-
 let gameState = {
+  roundNumber: 1,
+  state: false,
   wins: 0,
   draws: 0,
   losses: 0,
 };
 
 let play = document.getElementById("play");
-play.addEventListener("click", playGame)
+play.addEventListener("click", playGame);
 let rock = document.getElementById("rock");
 rock.addEventListener("click", rpsGame);
 let paper = document.getElementById("paper");
@@ -24,22 +24,46 @@ paper.addEventListener("click", rpsGame);
 let scissors = document.getElementById("scissors");
 scissors.addEventListener("click", rpsGame);
 
+function playGame() {
+  gameState["state"] = true;
+  //todo complete this function
+  document.getElementById("play").remove();
+  let h2 = document.createElement("h2");
+  h2.id = "roundNumber";
+  h2.textContent = "Round: " + gameState["roundNumber"];
+  document.getElementById("which-round").appendChild(h2);
+  if (gameState["roundNumber"] === 5) {
+    if (gameState["wins"] > gameState["losses"]) {
+      alert("YOU WIN");
+    } else if (gameState["wins"] < gameState["losses"]) {
+      alert("YOU LOSE");
+    } else {
+      alert("IT'S A DRAW");
+    }
+  }
+}
 
 function rpsGame(event) {
-  // Get the choices
-  let userChoice, botChoice;
-  userChoice = event.target.id;
-  let randomNumber = getRandomNumber();
-  botChoice = computerChoice(randomNumber);
-  console.log(`Your choice: ${userChoice} | Bot choice: ${botChoice}`);
-  // Decide the winner
-  let results = decideWinner(userChoice, botChoice);
-  console.log(results);
-  // Get final message
-  let finalMessage = getMessage(results);
-  console.log(finalMessage["message"]);
-  // Change the frontend
-  changeFrontEnd(userChoice, botChoice, finalMessage);
+  if (gameState["state"] === true) {
+    // Get the choices
+    let userChoice, botChoice;
+    userChoice = event.target.id;
+    let randomNumber = getRandomNumber();
+    botChoice = computerChoice(randomNumber);
+    console.log(`Your choice: ${userChoice} | Bot choice: ${botChoice}`);
+    // Decide the winner
+    let results = decideWinner(userChoice, botChoice);
+    console.log(results);
+    // Get final message
+    let finalMessage = getMessage(results);
+    console.log(finalMessage["message"]);
+    // Change the frontend
+    changeFrontEnd(userChoice, botChoice, finalMessage);
+    gameState["roundNumber"] += 1;
+
+  } else {
+    alert('Click on "Play" to begin');
+  }
 }
 
 // Generate a random number between 0 and 3 (3 excluded)
