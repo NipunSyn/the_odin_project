@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <script src="./script.js"></script>
-
     <section>
       <div class="heading flex">
         <div class="text-box">
@@ -21,15 +19,17 @@
           </p>
         </div>
         <div class="img-box">
-          <img src="#" alt="Mickey Mouse" />
+          <img src="./images/mickey.png" alt="Mickey Mouse" />
         </div>
+      </div>
+      <div class="playcontainer flex" id="which-round">
+        <button id="play">Play</button>
       </div>
       <div class="console flex" id="console-div">
         <img
           src="./images/rock.png"
           alt="rock"
           id="rock"
-          onclick="rpsGame(this)"
           width="150px"
           height="150px"
         />
@@ -37,7 +37,6 @@
           src="./images/paper.png"
           alt="paper"
           id="paper"
-          onclick="rpsGame(this)"
           width="150px"
           height="150px"
         />
@@ -45,16 +44,16 @@
           src="./images/scissors.png"
           alt="scissors"
           id="scissors"
-          onclick="rpsGame(this)"
           width="150px"
           height="150px"
         />
       </div>
       <div class="results flex">
-        <h1>Wins: <span id="wins">0</span></h1>
-        <h1>Draws: <span id="draws">0</span></h1>
-        <h1>Losses: <span id="losses">0</span></h1>
+        <h1>Wins: <span class="spantext" id="wins">0</span></h1>
+        <h1>Draws: <span class="spantext" id="draws">0</span></h1>
+        <h1>Losses: <span class="spantext" id="losses">0</span></h1>
       </div>
     </section>
+    <script src="./script.js"></script>
   </body>
 </html>

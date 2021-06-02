@@ -3,14 +3,32 @@
 // Get the final message from the result
 // Change the frontend using the message and user choices
 
-// for(let round= 1; round <=5; round++){
+//todo make sure that the rock paper scissors game doesn't work before you press play
+//todo on every iteration, update the wins, losses, and draws
+//todo the function that will loop the game five times
+//todo after the game gets over, display the winner and reset the game (make play -> play again)
 
-// }
 
-function rpsGame(yourChoice) {
+let gameState = {
+  wins: 0,
+  draws: 0,
+  losses: 0,
+};
+
+let play = document.getElementById("play");
+play.addEventListener("click", playGame)
+let rock = document.getElementById("rock");
+rock.addEventListener("click", rpsGame);
+let paper = document.getElementById("paper");
+paper.addEventListener("click", rpsGame);
+let scissors = document.getElementById("scissors");
+scissors.addEventListener("click", rpsGame);
+
+
+function rpsGame(event) {
   // Get the choices
   let userChoice, botChoice;
-  userChoice = yourChoice.id;
+  userChoice = event.target.id;
   let randomNumber = getRandomNumber();
   botChoice = computerChoice(randomNumber);
   console.log(`Your choice: ${userChoice} | Bot choice: ${botChoice}`);
@@ -52,10 +70,13 @@ function decideWinner(userChoice, botChoice) {
 // Generate final message
 function getMessage([userValue, botValue]) {
   if (userValue === 1) {
+    gameState["wins"] += 1;
     return { message: "You Won, lessgoooo :)", color: "green" };
   } else if (userValue === 0) {
-    return { message: "Mickey Won, try again :(", color: "red" };
+    gameState["losses"] += 1;
+    return { message: "Mickey Won, try again :(", color: "rgb(180, 49, 49)" };
   } else {
+    gameState["draws"] += 1;
     return { message: "Sigh, it's a draw, go again!", color: "blue" };
   }
 }
@@ -77,14 +98,7 @@ function changeFrontEnd(userChoice, botChoice, message) {
   let botDiv = document.createElement("div");
   let messageDiv = document.createElement("div");
 
-//   let yourString = document.createElement("h2");
-//   yourString.innerHTML = "Your Choice";
-//   let botString = document.createElement("h2");
-//   botString.innerHTML = "Mickey's Choice";
-
-//   humanDiv.appendChild(yourString);
-//   botDiv.appendChild(botString);
-
+  // changing the console screen
   humanDiv.innerHTML = `<img src='${imageDatabase[userChoice]}' height=150 width=150/>`;
   humanDiv.setAttribute("id", "humanDiv");
   botDiv.innerHTML = `<img src='${imageDatabase[botChoice]}' height=150 width=150/>`;
@@ -95,4 +109,9 @@ function changeFrontEnd(userChoice, botChoice, message) {
   document.getElementById("console-div").appendChild(humanDiv);
   document.getElementById("console-div").appendChild(messageDiv);
   document.getElementById("console-div").appendChild(botDiv);
+
+  // changing the results section
+  document.querySelector("#wins").textContent = gameState["wins"];
+  document.querySelector("#draws").textContent = gameState["draws"];
+  document.querySelector("#losses").textContent = gameState["losses"];
 }

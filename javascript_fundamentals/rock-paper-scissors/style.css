@@ -1,7 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: "Lobster", sans-serif;
+  background-color: #38a9b9;
+}
+
+h1 {
+  font-size: 3em;
+  color: rgb(180, 49, 49);
+}
+
+.spantext {
+  color: rgb(180, 49, 49);
+}
+
+p {
+  font-size: 1.6em;
+}
+
+.results h1 {
+  color: #111;
+}
+
+section {
+  background-image: url(./images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading img {
+  width: 100%;
+}
+
+.heading img:hover {
+  transform: rotate(360deg);
+  transition: 1.5s;
 }
 
 .flex {
@@ -9,11 +49,13 @@
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  width: 80%;
+  width: 89%;
   border: 1px solid black;
 }
 
 .heading {
+  justify-content: left;
+  position: relative;
   margin: 2em auto 0 auto;
   padding: 2em;
 }
@@ -22,12 +64,33 @@
 }
 
 .img-box {
-  border: 1px solid black;
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  height: 270px;
+  width: 250px;
+  /* border: 1px solid black; */
+}
+
+.playcontainer {
+  margin: 0 auto;
+  height: 50px;
+}
+
+#play {
+  font-family: "Varela Round", sans-serif;
+  font-weight: 800;
+  height: 80%;
+  width: 120px;
+  background-color: rgb(40, 204, 40);
+  font-size: 1.5em;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .console {
   margin: 0 auto;
-  height: 50vh;
+  height: 40vh;
   padding: 2em;
 }
 
@@ -38,13 +101,16 @@
 
 .console img:hover {
   cursor: pointer;
-  box-shadow: rgba(103, 32, 184, 0.7) 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: scale(1.2);
 }
 
 #humanDiv {
-  box-shadow: rgba(88, 247, 154, 0.35) 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: scale(1.2);
 }
 
 #botDiv {
-  box-shadow: rgb(196, 50, 50) 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: scale(1.2);
 }
