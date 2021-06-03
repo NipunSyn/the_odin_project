@@ -15,24 +15,31 @@ let gameState = {
   losses: 0,
 };
 
+let images = {
+  rock: document.getElementById("rock").src,
+  paper: document.getElementById("paper").src,
+  scissors: document.getElementById("scissors").src,
+};
+
 let play = document.getElementById("play");
 play.addEventListener("click", playGame);
-let rock = document.getElementById("rock");
-rock.addEventListener("click", rpsGame);
-let paper = document.getElementById("paper");
-paper.addEventListener("click", rpsGame);
-let scissors = document.getElementById("scissors");
-scissors.addEventListener("click", rpsGame);
 
 function playGame() {
   gameState["state"] = true;
   //todo complete this function
+  if (gameState["roundNumber"] > 5) {
+    document.getElementById("play").remove();
+    let h2 = document.createElement("h2");
+    h2.id = "result-text";
+    h2.textContent = "GAME OVER";
+    document.getElementById("which-round").appendChild(h2);
+  }
   document.getElementById("play").remove();
   let h2 = document.createElement("h2");
   h2.id = "roundNumber";
   h2.textContent = "Round: " + gameState["roundNumber"];
   document.getElementById("which-round").appendChild(h2);
-  if (gameState["roundNumber"] === 5) {
+  if (gameState["roundNumber"] > 5) {
     if (gameState["wins"] > gameState["losses"]) {
       alert("YOU WIN");
     } else if (gameState["wins"] < gameState["losses"]) {
@@ -40,6 +47,14 @@ function playGame() {
     } else {
       alert("IT'S A DRAW");
     }
+    //todo code to reset game, and create "play again"
+  } else {
+    let rock = document.getElementById("rock");
+    rock.addEventListener("click", rpsGame);
+    let paper = document.getElementById("paper");
+    paper.addEventListener("click", rpsGame);
+    let scissors = document.getElementById("scissors");
+    scissors.addEventListener("click", rpsGame);
   }
 }
 
@@ -58,9 +73,12 @@ function rpsGame(event) {
     let finalMessage = getMessage(results);
     console.log(finalMessage["message"]);
     // Change the frontend
-    changeFrontEnd(userChoice, botChoice, finalMessage);
     gameState["roundNumber"] += 1;
-
+    changeFrontEnd(userChoice, botChoice, finalMessage);
+    // Reset the console after every round
+    let playAgain = document.getElementById("play");
+    playAgain.addEventListener("click", resetConsole);
+    playAgain.addEventListener("click", playGame);
   } else {
     alert('Click on "Play" to begin');
   }
@@ -138,4 +156,43 @@ function changeFrontEnd(userChoice, botChoice, message) {
   document.querySelector("#wins").textContent = gameState["wins"];
   document.querySelector("#draws").textContent = gameState["draws"];
   document.querySelector("#losses").textContent = gameState["losses"];
+
+  console.log(gameState["roundNumber"]);
+  // button to start next round
+  document.querySelector("#roundNumber").remove();
+  let button = document.createElement("button");
+  button.id = "play";
+  button.textContent = "Next";
+  document.querySelector("#which-round").appendChild(button);
+}
+
+function resetConsole() {
+  if (gameState["roundNumber"] > 1) {
+    let div = document.querySelector("#console-div");
+    console.log(div);
+    while (div.firstChild) {
+      div.removeChild(div.firstChild);
+    }
+    let rock = document.createElement("img");
+    rock.src = images["rock"];
+    rock.id = "rock";
+    rock.style.width = "150px";
+    rock.style.height = "150px";
+
+    let paper = document.createElement("img");
+    paper.src = images["paper"];
+    paper.id = "paper";
+    paper.style.width = "150px";
+    paper.style.height = "150px";
+
+    let scissors = document.createElement("img");
+    scissors.src = images["scissors"];
+    scissors.id = "scissors";
+    scissors.style.width = "150px";
+    scissors.style.height = "150px";
+
+    document.querySelector("#console-div").appendChild(rock);
+    document.querySelector("#console-div").appendChild(paper);
+    document.querySelector("#console-div").appendChild(scissors);
+  }
 }

@@ -77,7 +77,8 @@ section {
   height: 50px;
 }
 
-#play {
+#play,
+#play-next {
   font-family: "Varela Round", sans-serif;
   font-weight: 800;
   height: 80%;
