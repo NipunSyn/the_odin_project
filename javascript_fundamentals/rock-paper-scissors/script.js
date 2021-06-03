@@ -3,10 +3,9 @@
 // Get the final message from the result
 // Change the frontend using the message and user choices
 
-//todo on every iteration, update the wins, losses, and draws
-//todo the function that will loop the game five times
-//todo after the game gets over, display the winner and reset the game (make play -> play again)
+//?write a function to reset the game (make play -> play again) (when?)
 
+//! object to control the state of the game
 let gameState = {
   roundNumber: 1,
   state: false,
@@ -15,6 +14,7 @@ let gameState = {
   losses: 0,
 };
 
+//! creating a global image directory, will be used to reset the console
 let images = {
   rock: document.getElementById("rock").src,
   paper: document.getElementById("paper").src,
@@ -24,6 +24,7 @@ let images = {
 let play = document.getElementById("play");
 play.addEventListener("click", playGame);
 
+//! Function that controls how the game is run
 function playGame() {
   gameState["state"] = true;
   //todo complete this function
@@ -33,13 +34,6 @@ function playGame() {
     h2.id = "result-text";
     h2.textContent = "GAME OVER";
     document.getElementById("which-round").appendChild(h2);
-  }
-  document.getElementById("play").remove();
-  let h2 = document.createElement("h2");
-  h2.id = "roundNumber";
-  h2.textContent = "Round: " + gameState["roundNumber"];
-  document.getElementById("which-round").appendChild(h2);
-  if (gameState["roundNumber"] > 5) {
     if (gameState["wins"] > gameState["losses"]) {
       alert("YOU WIN");
     } else if (gameState["wins"] < gameState["losses"]) {
@@ -47,8 +41,12 @@ function playGame() {
     } else {
       alert("IT'S A DRAW");
     }
-    //todo code to reset game, and create "play again"
   } else {
+    document.getElementById("play").remove();
+    let h2 = document.createElement("h2");
+    h2.id = "roundNumber";
+    h2.textContent = "Round: " + gameState["roundNumber"];
+    document.getElementById("which-round").appendChild(h2);
     let rock = document.getElementById("rock");
     rock.addEventListener("click", rpsGame);
     let paper = document.getElementById("paper");
@@ -58,6 +56,7 @@ function playGame() {
   }
 }
 
+//! master function, controls most of the sub functions
 function rpsGame(event) {
   if (gameState["state"] === true) {
     // Get the choices
@@ -95,7 +94,7 @@ function computerChoice(number) {
   return choices[number];
 }
 
-// Decide the winner using the two inputs
+//! Decide the winner using the two inputs
 function decideWinner(userChoice, botChoice) {
   let possibilities = {
     rock: { rock: 0.5, paper: 0, scissors: 1 },
@@ -109,7 +108,7 @@ function decideWinner(userChoice, botChoice) {
   return [userValue, botValue];
 }
 
-// Generate final message
+//! Generate final message
 function getMessage([userValue, botValue]) {
   if (userValue === 1) {
     gameState["wins"] += 1;
@@ -123,8 +122,7 @@ function getMessage([userValue, botValue]) {
   }
 }
 
-// Change the frontend (this is the tricky part)
-
+//! Change the frontend (this is the tricky part)
 function changeFrontEnd(userChoice, botChoice, message) {
   imageDatabase = {
     rock: document.getElementById("rock").src,
@@ -166,6 +164,7 @@ function changeFrontEnd(userChoice, botChoice, message) {
   document.querySelector("#which-round").appendChild(button);
 }
 
+//! resetting the console screen after every round (this was also tricky)
 function resetConsole() {
   if (gameState["roundNumber"] > 1) {
     let div = document.querySelector("#console-div");
