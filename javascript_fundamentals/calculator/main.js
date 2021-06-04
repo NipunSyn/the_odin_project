@@ -37,7 +37,6 @@ for (let i = 0; i < choices.length; i++) {
     choices[i].value == "minus" ||
     choices[i].value == "divide" ||
     choices[i].value == "multiply" ||
-    choices[i].value == "del"
   ) {
     choices[i].addEventListener("click", checkOperator);
   } else if (choices[i].value == "del") {
