@@ -30,8 +30,11 @@ function multiply(firstNumber, secondNumber) {
   return firstNumber * secondNumber;
 }
 
-let choices = document.querySelectorAll("button");
+//! Deciding what happends on button click
+
+let choices = document.querySelectorAll("button"); //selecting all the buttons
 for (let i = 0; i < choices.length; i++) {
+  //deciding the function to be carried out for different buttons
   if (
     choices[i].value == "plus" ||
     choices[i].value == "minus" ||
@@ -58,6 +61,7 @@ calcState = {
   result: 0,
 };
 
+//! Basically the reception, which sends the different button inputs to different functions
 function whatToDo(event) {
   if (calcState["operator"] == "") {
     readFirstNumber(event.target.value);
@@ -73,19 +77,22 @@ function whatToDo(event) {
   }
 }
 
+//! maintains the number before an operator
 function readFirstNumber(value) {
   calcState["firstNumber"] += value;
   document.getElementById("displaybox").textContent = calcState["firstNumber"];
 }
 
+//! maintains the number after the operator
 function readSecondNumber(value) {
   calcState["secondNumber"] += value;
   document.getElementById("displaybox").textContent = calcState["secondNumber"];
 }
 
+//! decides what to do on encountering different operators
 function checkOperator(event) {
   if (calcState["firstNumber"] == "" || calcState["firstNumber"] == "-") {
-    alert("Operator cannot be entered first, except minus");
+    alert("Operator cannot be entered first, except minus"); //allow only minus to be inputted before a number
   } else if (calcState["firstNumber"] == "" && event.target.value == "minus") {
     calcState["firstNumber"] = event.target.value;
     console.log("First Number: ", calcState["firstNumber"]);
@@ -95,6 +102,7 @@ function checkOperator(event) {
   }
 }
 
+//! The math part. Makes use of th MATH functions created above
 function evaluate() {
   if (calcState["operator"] == "plus") {
     document.getElementById("displaybox").textContent = "+";
@@ -136,6 +144,7 @@ function evaluate() {
   document.getElementById("displaybox").textContent = calcState["result"];
 }
 
+//! clears everything
 function resetFunction() {
   calcState = {
     firstNumber: "",
@@ -146,6 +155,7 @@ function resetFunction() {
   document.getElementById("displaybox").textContent = "0";
 }
 
+//! removes the last character of the string
 function clearSelection() {
   if (calcState["operator"] == "" && calcState["secondNumber"] == "") {
     calcState["firstNumber"] = calcState["firstNumber"].slice(
