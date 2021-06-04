@@ -36,7 +36,7 @@ for (let i = 0; i < choices.length; i++) {
     choices[i].value == "plus" ||
     choices[i].value == "minus" ||
     choices[i].value == "divide" ||
-    choices[i].value == "multiply" ||
+    choices[i].value == "multiply"
   ) {
     choices[i].addEventListener("click", checkOperator);
   } else if (choices[i].value == "del") {
@@ -75,12 +75,12 @@ function whatToDo(event) {
 
 function readFirstNumber(value) {
   calcState["firstNumber"] += value;
-  console.log("First Number: ", calcState["firstNumber"]);
+  document.getElementById("displaybox").textContent = calcState["firstNumber"];
 }
 
 function readSecondNumber(value) {
   calcState["secondNumber"] += value;
-  console.log("Second Number:", calcState["secondNumber"]);
+  document.getElementById("displaybox").textContent = calcState["secondNumber"];
 }
 
 function checkOperator(event) {
@@ -97,6 +97,7 @@ function checkOperator(event) {
 
 function evaluate() {
   if (calcState["operator"] == "plus") {
+    document.getElementById("displaybox").textContent = "+";
     calcState["result"] = add(
       calcState["firstNumber"],
       calcState["secondNumber"]
@@ -105,6 +106,7 @@ function evaluate() {
     calcState["firstNumber"] = `${calcState["result"]}`;
   }
   if (calcState["operator"] == "minus") {
+    document.getElementById("displaybox").textContent = "-";
     calcState["result"] = subtract(
       calcState["firstNumber"],
       calcState["secondNumber"]
@@ -113,6 +115,7 @@ function evaluate() {
     calcState["firstNumber"] = `${calcState["result"]}`;
   }
   if (calcState["operator"] == "divide") {
+    document.getElementById("displaybox").textContent = "/";
     calcState["result"] = divide(
       calcState["firstNumber"],
       calcState["secondNumber"]
@@ -121,6 +124,7 @@ function evaluate() {
     calcState["firstNumber"] = `${calcState["result"]}`;
   }
   if (calcState["operator"] == "multiply") {
+    document.getElementById("displaybox").textContent = "x";
     calcState["result"] = multiply(
       calcState["firstNumber"],
       calcState["secondNumber"]
@@ -129,7 +133,7 @@ function evaluate() {
     calcState["firstNumber"] = `${calcState["result"]}`;
   }
 
-  console.log("result: ", calcState["result"]);
+  document.getElementById("displaybox").textContent = calcState["result"];
 }
 
 function resetFunction() {
@@ -139,6 +143,7 @@ function resetFunction() {
     operator: "",
     result: 0,
   };
+  document.getElementById("displaybox").textContent = "0";
 }
 
 function clearSelection() {
@@ -147,12 +152,16 @@ function clearSelection() {
       0,
       calcState["firstNumber"].length - 1
     );
-  } else if (calcState["secondNumber" == ""]) {
+    document.getElementById("displaybox").textContent =
+      calcState["firstNumber"];
+  } else if (calcState["secondNumber"] == "") {
     calcState["operator"] = "";
   } else {
     calcState["secondNumber"] = calcState["secondNumber"].slice(
       0,
       calcState["secondNumber"].length - 1
     );
+    document.getElementById("displaybox").textContent =
+      calcState["secondNumber"];
   }
 }
