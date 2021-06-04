@@ -1,8 +1,5 @@
-//todo figure out how to store the first number and separate it from the second number
-//? string concat maybe?
 //todo write a function to display the number typed up until the operator, after that display the second number
 //todo if a third number is typed, display the result of the first two numbers, and use that as the new first number
-//todo figure out how to work with decimal points
 
 //! MATH FUNCTIONS
 function add(firstNumber, secondNumber) {
