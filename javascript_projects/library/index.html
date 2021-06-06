@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Library | TOP</title>
+  </head>
+  <body>
+    <section class="mainPage">
+      <div class="titlebar">
+        <h1>Mind Palace.</h1>
+      </div>
+      <div class="flex">
+        <div class="display">
+          <h2>Looks like you're not reading enough...</h2>
+          <p>Start Now?</p>
+          <button id="addBook">+</button>
+          <div class="bookcontainer" id="books"></div>
+        </div>
+        <div id="infoBox">
+          <div class="onlyColor">Info</div>
+          <div class="card">
+            <p class="info">Name: <span class="span" id="userName"></span></p>
+            <p class="info">
+              Number of Books added: <span class="span" id="booksAdded"></span>
+            </p>
+            <p class="info">
+              Number of Books finished:
+              <span class="span" id="booksFinished"></span>
+            </p>
+            <p class="info">
+              Last book added: <span class="span" id="lastBookAdded"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
