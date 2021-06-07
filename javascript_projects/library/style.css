@@ -14,7 +14,7 @@
   --titleTwo: #d9ed92;
   --titleColor: #354f52;
   --cardHead: #718355;
-  --cardBody: #d8e2dc;
+  --cardBody: #eff1ef;
   --desc: #333d29;
   --headone: #97a97c;
   --headtwo: #e9f5db;
@@ -42,8 +42,10 @@ body {
 }
 
 .bookcontainer {
+  width: 80rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .display h2 {
@@ -98,7 +100,7 @@ body {
 .onlyColor {
   font-size: 3rem;
   padding: 1rem;
-  background-image: linear-gradient(var(--headone), var(--headtwo));
+  background-image: linear-gradient(to right, var(--titleOne), var(--titleTwo));
   color: var(--desc);
   border-bottom: 3px solid var(--desc);
 }
@@ -107,23 +109,51 @@ body {
   font-weight: 600;
 }
 
-.bookCard {
-  background-color: #d9ed92;
-  padding: 1.5rem;
-  width: 15rem;
-  height: 20rem;
+section .display .bookCard {
+  background-image: linear-gradient(var(--headone), var(--headtwo));
+  border: 1px solid var(--desc);
+  padding: 1.2rem;
+  width: 20rem;
+  height: 26rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
 }
 
-.bookCard:hover {
-  transform: scale(1.1);
+section .display .bookCard:hover {
+  transform: scale(1.03);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: 0.5s;
+}
+
+section .display .bookInfo {
+  font-family: "Caveat", cursive;
+  font-size: 1.8rem;
+  line-height: 1.5rem;
+}
+
+section .display .infoHeader {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+#removeBook {
+  justify-self: flex-end;
+  align-self: flex-end;
+  background-color: #cc0000;
+  cursor: pointer;
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+}
+
+#removeBook:hover {
+  transform: scale(0.98);
+  color: white;
 }
 
 /* for the popup form */
