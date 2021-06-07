@@ -12,12 +12,56 @@
       <div class="titlebar">
         <h1>Mind Palace.</h1>
       </div>
+      <div class="loginPopup questionaire">
+        <div class="formPopup" id="popupForm">
+          <form action="" class="formContainer">
+            <label for="name">
+              <strong>Name</strong>
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Your Name"
+              name="name"
+              required
+            />
+            <label for="bookName">
+              <strong>Name of Book</strong>
+            </label>
+            <input
+              type="text"
+              id="bookName"
+              placeholder="Book Name"
+              name="bookName"
+              required
+            />
+            <div class="radioBox">
+              <p><strong>Finished Reading?</strong></p>
+            <input type="radio" id="Read" name="readStatus" value="Yes" />
+            <label for="Read"> Yes </label> <br />
+            <input
+              type="radio"
+              id="isRead"
+              name="readStatus"
+              value="No"
+              checked
+            />
+            <label for="isRead"> No </label> <br />
+            </div>
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel"">Close</button>
+          </form>
+        </div>
+      </div>
       <div class="flex">
         <div class="display">
           <h2>Looks like you're not reading enough...</h2>
           <p>Start Now?</p>
-          <button id="addBook">+</button>
-          <div class="bookcontainer" id="books"></div>
+          <div class="bookcontainer" id="books">
+            <div class="bookCard">
+              <button id="addBook">+</button>
+            </div>
+          </div>
         </div>
         <div id="infoBox">
           <div class="onlyColor">Info</div>

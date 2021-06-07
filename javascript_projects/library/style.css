@@ -16,6 +16,8 @@
   --cardHead: #718355;
   --cardBody: #d8e2dc;
   --desc: #333d29;
+  --headone: #97a97c;
+  --headtwo: #e9f5db;
 }
 
 body {
@@ -56,10 +58,10 @@ body {
   margin-bottom: 1.6rem;
 }
 
-.display button {
+#addBook {
   border: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-image: linear-gradient(to right, var(--titleOne), var(--titleTwo));
+  background-image: linear-gradient(var(--titleOne), var(--titleTwo));
   display: inline-block;
   width: 6rem;
   height: 6rem;
@@ -69,9 +71,16 @@ body {
   font-size: 4rem;
 }
 
+#addBook:hover {
+  transform: scale(1.1);
+  background-color: var(--desc);
+  border: 1px solid var(--desc);
+}
+
 #infoBox {
+  display: flex;
+  flex-direction: column;
   width: 30rem;
-  padding-right: 10px;
 }
 
 .card {
@@ -80,8 +89,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-evenly;
   background-color: var(--cardBody);
   line-height: 6rem;
   font-size: 2rem;
@@ -90,13 +98,87 @@ body {
 .onlyColor {
   font-size: 3rem;
   padding: 1rem;
-  background-color: var(--cardHead);
-  color: var(--titleTwo);
-  width: 100%;
-  height: auto;
+  background-image: linear-gradient(var(--headone), var(--headtwo));
+  color: var(--desc);
   border-bottom: 3px solid var(--desc);
 }
 
 .info {
   font-weight: 600;
+}
+
+.bookCard {
+  background-color: #d9ed92;
+  padding: 1.5rem;
+  width: 15rem;
+  height: 20rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.bookCard:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: 0.5s;
+}
+
+/* for the popup form */
+
+.loginPopup {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.formPopup {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-50%, 5%);
+  border: 3px solid var(--headone);
+  z-index: 9;
+}
+.formContainer {
+  max-width: 300px;
+  padding: 20px;
+  background-color: #fff;
+}
+.formContainer input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  border: none;
+  background: #eee;
+}
+.formContainer input[type="text"]:focus,
+.formContainer input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.formContainer .btn {
+  padding: 12px 20px;
+  border: none;
+  background-color: #8ebf42;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+.formContainer .cancel {
+  background-color: #cc0000;
+}
+.formContainer .btn:hover,
+.openButton:hover {
+  opacity: 1;
+}
+
+.radioBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
 }
