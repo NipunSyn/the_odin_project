@@ -32,5 +32,5 @@ function updateLibrary() {
   const newBook = new bookCreator(bookName, authorName, isRead);
 
   listOfBooks.push(newBook);
-  console.log[listOfBooks[0]];
+  console.log(listOfBooks[0]);
 }
