@@ -1,19 +1,23 @@
+//constructor for books
 function bookCreator(bookName, author, isRead) {
   this.name = bookName;
   this.author = author;
   this.isRead = isRead;
 }
 
-let nameOfUser = "";
+//keeping tabs of books
 let listOfBooks = [];
 let finished = 0;
 
+//button to add new books
 let addBookButton = document.querySelector("#addBook");
 addBookButton.addEventListener("click", openForm);
 
+//button to close the form
 let close = document.querySelector(".btn.cancel");
 close.addEventListener("click", closeForm);
 
+//to decide what happens of clicking submit
 let submit = document.querySelector("#submitButton");
 submit.addEventListener("click", updateLibrary);
 
@@ -39,7 +43,6 @@ function updateLibrary() {
     const newBook = new bookCreator(bookName, authorName, isRead);
 
     listOfBooks.push(newBook);
-    console.log(listOfBooks[0]);
 
     form.reset();
     closeForm();
@@ -59,7 +62,7 @@ function changeFrontEnd(name, bookName, authorName, isRead) {
 function addBook(bookName, authorName, isRead) {
   newDiv = document.createElement("div");
   newDiv.className = "bookCard";
-  newDiv.id = bookName;
+  // newDiv.id = bookName;
 
   let infoHeader = document.createElement("p");
   infoHeader.className = "infoHeader";
@@ -83,7 +86,7 @@ function addBook(bookName, authorName, isRead) {
   }
 
   let button = document.createElement("button");
-  button.id = "removeBook";
+  button.className = "removeBook";
   button.textContent = "x";
 
   newDiv.appendChild(infoHeader);
@@ -107,4 +110,22 @@ function updateInfoCard(name) {
 
   let lastBook = document.getElementById("lastBookAdded");
   lastBook.textContent = listOfBooks[listOfBooks.length - 1].name;
+}
+
+let books = document.getElementById("books");
+
+books.addEventListener("click", removeItem);
+
+//Remove Item
+
+function removeItem(event) {
+  if (event.target.classList.contains("removeBook")) {
+    if (confirm("Are You Sure?")) {
+      let div = event.target.parentElement;
+      books.removeChild(div);
+      let name = event.target.parentElement.id;
+      index = listOfBooks.indexOf(listOfBooks[name]);
+      listOfBooks.splice(index, 1);
+    }
+  }
 }

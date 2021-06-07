@@ -128,6 +128,7 @@ section .display .bookCard:hover {
   transition: 0.5s;
 }
 
+
 section .display .bookInfo {
   font-family: "Caveat", cursive;
   font-size: 1.8rem;
@@ -140,7 +141,7 @@ section .display .infoHeader {
   font-weight: 600;
 }
 
-#removeBook {
+.removeBook {
   justify-self: flex-end;
   align-self: flex-end;
   background-color: #cc0000;
@@ -151,7 +152,7 @@ section .display .infoHeader {
   border-radius: 5px;
 }
 
-#removeBook:hover {
+.removeBook:hover {
   transform: scale(0.98);
   color: white;
 }
