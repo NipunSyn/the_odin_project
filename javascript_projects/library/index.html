@@ -35,20 +35,30 @@
               name="bookName"
               required
             />
+            <label for="authorName">
+              <strong>Name of Author</strong>
+            </label>
+            <input
+              type="text"
+              id="authorName"
+              placeholder="Author Name"
+              name="authorName"
+              required
+            />
             <div class="radioBox">
               <p><strong>Finished Reading?</strong></p>
-            <input type="radio" id="Read" name="readStatus" value="Yes" />
-            <label for="Read"> Yes </label> <br />
+            <input type="radio" id="Yes" name="readStatus" value="Yes" />
+            <label for="Yes"> Yes </label> <br />
             <input
               type="radio"
-              id="isRead"
+              id="No"
               name="readStatus"
               value="No"
               checked
             />
-            <label for="isRead"> No </label> <br />
+            <label for="No"> No </label> <br />
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" id="submitButton" class="btn">Submit</button>
             <button type="button" class="btn cancel"">Close</button>
           </form>
         </div>
