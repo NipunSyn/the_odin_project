@@ -1,15 +1,110 @@
 //constructor for books
-function bookCreator(bookName, author, isRead) {
+function bookCreator(bookName, author, isRead, isbn) {
   this.name = bookName;
   this.author = author;
   this.isRead = isRead;
+  this.isbn = isbn;
 }
 
 //todo: figure out how to use local storage for this (shouldn't be difficult)
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    }
+    return books;
+  }
 
-//keeping tabs of books
-let listOfBooks = {};
-let lastBookAdded = "";
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+    books.forEach((book, index) => {
+      if (book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  static switchStatus(isbn) {
+    const books = Store.getBooks();
+    books.forEach((book, index) => {
+      if (book.isbn === isbn) {
+        if (books[index].isRead === "Yes") {
+          books[index].isRead = "No";
+        } else {
+          books[index].isRead = "Yes";
+        }
+      }
+    });
+  }
+}
+
+class UI {
+  static displayBooks() {
+    const books = Store.getBooks();
+
+    books.forEach((book) => UI.addBookToList(book));
+  }
+
+  static addBookToList(book) {
+    let newDiv = document.createElement("div");
+    newDiv.className = "bookCard";
+    // newDiv.id = bookName;
+
+    let infoHeader = document.createElement("p");
+    infoHeader.className = "infoHeader";
+    infoHeader.textContent = "Book Info";
+
+    let bookVar = document.createElement("p");
+    bookVar.className = "bookInfo";
+    bookVar.textContent = `Name: ${book.name}`;
+
+    let author = document.createElement("p");
+    author.className = "bookInfo";
+    author.textContent = `Author: ${book.author}`;
+
+    let status = document.createElement("p");
+    status.className = "bookInfo";
+    if (book.isRead == "Yes") {
+      status.textContent = "Status: Read";
+    } else {
+      status.textContent = "Status: Not Read";
+    }
+
+    let uid = document.createElement("p");
+    uid.className = "bookInfo";
+    uid.appendChild(document.createTextNode(book.isbn));
+
+    let button = document.createElement("button");
+    button.className = "removeBook";
+    button.textContent = "x";
+
+    newDiv.appendChild(infoHeader);
+    newDiv.appendChild(bookVar);
+    newDiv.appendChild(author);
+    newDiv.appendChild(status);
+    newDiv.appendChild(uid);
+    newDiv.appendChild(button);
+
+    document.getElementById("books").appendChild(newDiv);
+  }
+
+  static deleteBook(target) {
+    let div = target.parentElement;
+    div.remove();
+  }
+
+}
+
+document.addEventListener("DOMContentLoaded", UI.displayBooks);
 
 //button to add new books
 let addBookButton = document.querySelector("#addBook");
@@ -42,80 +137,39 @@ function updateLibrary() {
   let isRead = form["readStatus"].value;
 
   if (isbn != "" && bookName != "" && authorName != "" && isRead != "") {
-    const newBook = new bookCreator(bookName, authorName, isRead);
+    const newBook = new bookCreator(bookName, authorName, isRead, isbn);
 
-    //todo change here
-    listOfBooks[newBook.name] = newBook;
-    lastBookAdded = newBook.name;
+    document.querySelector(".display h2").textContent = "Happy Reading :)";
+    if (document.querySelector(".textToRemove")) {
+      document.querySelector(".textToRemove").remove();
+    }
+
+    UI.addBookToList(newBook);
+    Store.addBook(newBook);
 
     form.reset();
     closeForm();
-    changeFrontEnd(isbn, bookName, authorName, isRead);
   }
-}
-
-function changeFrontEnd(isbn, bookName, authorName, isRead) {
-  document.querySelector(".display h2").textContent = "Happy Reading :)";
-  if (document.querySelector(".textToRemove")) {
-    document.querySelector(".textToRemove").remove();
-  }
-  addBook(isbn, bookName, authorName, isRead);
-  // updateInfoCard(name);
-}
-
-function addBook(isbn, bookName, authorName, isRead) {
-  newDiv = document.createElement("div");
-  newDiv.className = "bookCard";
-  // newDiv.id = bookName;
-
-  let infoHeader = document.createElement("p");
-  infoHeader.className = "infoHeader";
-  infoHeader.textContent = "Book Info";
-
-  let book = document.createElement("p");
-  book.className = "bookInfo";
-  book.textContent = `Name: ${bookName}`;
-
-  let author = document.createElement("p");
-  author.className = "bookInfo";
-  author.textContent = `Author: ${authorName}`;
-
-  let status = document.createElement("p");
-  status.className = "bookInfo";
-  if (isRead == "Yes") {
-    status.textContent = "Status: Read";
-  } else {
-    status.textContent = "Status: Not Read";
-  }
-
-  let uid = document.createElement("p");
-  uid.className = "bookInfo";
-  uid.appendChild(document.createTextNode(isbn));
-
-  let button = document.createElement("button");
-  button.className = "removeBook";
-  button.textContent = "x";
-
-  newDiv.appendChild(infoHeader);
-  newDiv.appendChild(book);
-  newDiv.appendChild(author);
-  newDiv.appendChild(status);
-  newDiv.appendChild(uid);
-  newDiv.appendChild(button);
-
-  document.getElementById("books").appendChild(newDiv);
 }
 
 //Remove Item
 
 let books = document.getElementById("books");
 books.addEventListener("click", removeItem);
+books.addEventListener("click", removeItem);
 
 function removeItem(event) {
   if (event.target.classList.contains("removeBook")) {
     if (confirm("Are You Sure?")) {
-      let div = event.target.parentElement;
-      div.remove();
+      UI.deleteBook(event.target);
+      Store.removeBook(event.target.previousElementSibling.textContent);
     }
+  }
+}
+
+function switchStatus(event) {
+  if (event.target.classList.contains("switch")) {
+    UI.changeStatus(event.target);
+    Store.switchStatus(event.target.parentElement.lastElementChild.textContent);
   }
 }

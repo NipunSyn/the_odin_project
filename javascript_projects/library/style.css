@@ -25,12 +25,23 @@ body {
   font-size: 1.6rem;
 }
 
+img {
+  width: 100%;
+}
+
 .titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: "Pacifico", cursive;
   background-image: linear-gradient(to right, var(--titleOne), var(--titleTwo));
   color: var(--titleColor);
-  padding: 5rem;
+  padding: 2rem 5rem;
   font-size: 3rem;
+}
+
+.imageBox {
+  width: 15rem;
 }
 
 .flex {
@@ -42,7 +53,6 @@ body {
 }
 
 .bookcontainer {
-  width: 80rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -128,7 +138,6 @@ section .display .bookCard:hover {
   transition: 0.5s;
 }
 
-
 section .display .bookInfo {
   font-family: "Caveat", cursive;
   font-size: 1.8rem;
@@ -156,6 +165,7 @@ section .display .infoHeader {
   transform: scale(0.98);
   color: white;
 }
+
 
 /* for the popup form */
 
