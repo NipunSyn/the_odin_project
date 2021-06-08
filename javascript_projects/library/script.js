@@ -6,7 +6,8 @@ function bookCreator(bookName, author, isRead) {
 }
 
 //keeping tabs of books
-let listOfBooks = [];
+let listOfBooks = {};
+let lastBookAdded = "";
 let finished = 0;
 
 //button to add new books
@@ -42,7 +43,8 @@ function updateLibrary() {
   if (name != "" && bookName != "" && authorName != "" && isRead != "") {
     const newBook = new bookCreator(bookName, authorName, isRead);
 
-    listOfBooks.push(newBook);
+    listOfBooks[newBook.name] = newBook;
+    lastBookAdded = newBook.name;
 
     form.reset();
     closeForm();
@@ -103,13 +105,13 @@ function updateInfoCard(name) {
   nameOfPerson.textContent = name;
 
   let numBooks = document.getElementById("booksAdded");
-  numBooks.textContent = listOfBooks.length;
+  numBooks.textContent = Object.keys(listOfBooks).length;
 
   let finishedBooks = document.getElementById("booksFinished");
   finishedBooks.textContent = finished;
 
   let lastBook = document.getElementById("lastBookAdded");
-  lastBook.textContent = listOfBooks[listOfBooks.length - 1].name;
+  lastBook.textContent = lastBookAdded;
 }
 
 let books = document.getElementById("books");
@@ -122,10 +124,18 @@ function removeItem(event) {
   if (event.target.classList.contains("removeBook")) {
     if (confirm("Are You Sure?")) {
       let div = event.target.parentElement;
-      books.removeChild(div);
       let name = event.target.parentElement.id;
-      index = listOfBooks.indexOf(listOfBooks[name]);
-      listOfBooks.splice(index, 1);
+      console.log(name);
+      if (listOfBooks[name].isRead == "Yes") {
+        finished -= 1;
+      }
+      books.removeChild(div);
+      delete listOfBooks[name];
+      let numBooks = document.getElementById("booksAdded");
+      numBooks.textContent = Object.keys(listOfBooks).length;
     }
   }
 }
+
+//todo figure out how to remove book from the list
+//? use dictionary instead of list maybe?
