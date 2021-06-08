@@ -5,10 +5,11 @@ function bookCreator(bookName, author, isRead) {
   this.isRead = isRead;
 }
 
+//todo: figure out how to use local storage for this (shouldn't be difficult)
+
 //keeping tabs of books
 let listOfBooks = {};
 let lastBookAdded = "";
-let finished = 0;
 
 //button to add new books
 let addBookButton = document.querySelector("#addBook");
@@ -35,33 +36,34 @@ function updateLibrary() {
     e.preventDefault();
   });
 
-  let name = form["name"].value;
+  let isbn = form["isbn"].value;
   let bookName = form["bookName"].value;
   let authorName = form["authorName"].value;
   let isRead = form["readStatus"].value;
 
-  if (name != "" && bookName != "" && authorName != "" && isRead != "") {
+  if (isbn != "" && bookName != "" && authorName != "" && isRead != "") {
     const newBook = new bookCreator(bookName, authorName, isRead);
 
+    //todo change here
     listOfBooks[newBook.name] = newBook;
     lastBookAdded = newBook.name;
 
     form.reset();
     closeForm();
-    changeFrontEnd(name, bookName, authorName, isRead);
+    changeFrontEnd(isbn, bookName, authorName, isRead);
   }
 }
 
-function changeFrontEnd(name, bookName, authorName, isRead) {
+function changeFrontEnd(isbn, bookName, authorName, isRead) {
   document.querySelector(".display h2").textContent = "Happy Reading :)";
   if (document.querySelector(".textToRemove")) {
     document.querySelector(".textToRemove").remove();
   }
-  addBook(bookName, authorName, isRead);
-  updateInfoCard(name);
+  addBook(isbn, bookName, authorName, isRead);
+  // updateInfoCard(name);
 }
 
-function addBook(bookName, authorName, isRead) {
+function addBook(isbn, bookName, authorName, isRead) {
   newDiv = document.createElement("div");
   newDiv.className = "bookCard";
   // newDiv.id = bookName;
@@ -81,11 +83,14 @@ function addBook(bookName, authorName, isRead) {
   let status = document.createElement("p");
   status.className = "bookInfo";
   if (isRead == "Yes") {
-    finished += 1;
     status.textContent = "Status: Read";
   } else {
     status.textContent = "Status: Not Read";
   }
+
+  let uid = document.createElement("p");
+  uid.className = "bookInfo";
+  uid.appendChild(document.createTextNode(isbn));
 
   let button = document.createElement("button");
   button.className = "removeBook";
@@ -95,47 +100,22 @@ function addBook(bookName, authorName, isRead) {
   newDiv.appendChild(book);
   newDiv.appendChild(author);
   newDiv.appendChild(status);
+  newDiv.appendChild(uid);
   newDiv.appendChild(button);
 
   document.getElementById("books").appendChild(newDiv);
 }
 
-function updateInfoCard(name) {
-  let nameOfPerson = document.getElementById("userName");
-  nameOfPerson.textContent = name;
-
-  let numBooks = document.getElementById("booksAdded");
-  numBooks.textContent = Object.keys(listOfBooks).length;
-
-  let finishedBooks = document.getElementById("booksFinished");
-  finishedBooks.textContent = finished;
-
-  let lastBook = document.getElementById("lastBookAdded");
-  lastBook.textContent = lastBookAdded;
-}
+//Remove Item
 
 let books = document.getElementById("books");
-
 books.addEventListener("click", removeItem);
-
-//Remove Item
 
 function removeItem(event) {
   if (event.target.classList.contains("removeBook")) {
     if (confirm("Are You Sure?")) {
       let div = event.target.parentElement;
-      let name = event.target.parentElement.id;
-      console.log(name);
-      if (listOfBooks[name].isRead == "Yes") {
-        finished -= 1;
-      }
-      books.removeChild(div);
-      delete listOfBooks[name];
-      let numBooks = document.getElementById("booksAdded");
-      numBooks.textContent = Object.keys(listOfBooks).length;
+      div.remove();
     }
   }
 }
-
-//todo figure out how to remove book from the list
-//? use dictionary instead of list maybe?
