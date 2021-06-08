@@ -44,12 +44,12 @@ class Store {
           books[index].isRead = "No";
           sibling.textContent = "Status: Not Read";
           parentDiv.style.backgroundImage =
-            "linear-gradient(var(--headone), var(--headtwo))";
+            "linear-gradient(var(--titleOne), var(--headone))";
         } else {
           books[index].isRead = "Yes";
           sibling.textContent = "Status: Read";
           parentDiv.style.backgroundImage =
-            "linear-gradient(var(--headtwo), var(--headone))";
+            "linear-gradient(var(--titleOne), var(--titleTwo))";
         }
       }
     });
@@ -91,9 +91,11 @@ class UI {
     if (book.isRead == "Yes") {
       status.textContent = "Status: Read";
       newDiv.style.backgroundImage =
-        "linear-gradient(var(--headtwo), var(--headone))";
+        "linear-gradient(var(--titleOne), var(--titleTwo))";
     } else {
       status.textContent = "Status: Not Read";
+      newDiv.style.backgroundImage =
+        "linear-gradient(var(--titleOne), var(--headone))";
     }
 
     let uid = document.createElement("p");
