@@ -135,7 +135,7 @@ section .display .bookCard {
 section .display .bookCard:hover {
   transform: scale(1.03);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: 0.5s;
+  transition: ease-in;
 }
 
 section .display .bookInfo {
@@ -166,6 +166,22 @@ section .display .infoHeader {
   color: white;
 }
 
+.changeStatus {
+  font-family: sans-serif;
+  justify-content: flex-start;
+  justify-self: flex-start;
+  background-color: #18cc00;
+  cursor: pointer;
+  width: 5rem;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.changeStatus:hover {
+  transform: scale(0.98);
+  color: white;
+}
 
 /* for the popup form */
 

@@ -6,7 +6,7 @@ function bookCreator(bookName, author, isRead, isbn) {
   this.isbn = isbn;
 }
 
-//todo: figure out how to use local storage for this (shouldn't be difficult)
+//todo: how to use toggle switch
 class Store {
   static getBooks() {
     let books;
@@ -33,24 +33,39 @@ class Store {
     localStorage.setItem("books", JSON.stringify(books));
   }
 
-  static switchStatus(isbn) {
+  static switchStatus(target) {
+    isbn = target.previousElementSibling.textContent;
+    let parentDiv = target.parentElement;
+    let sibling = target.previousElementSibling.previousElementSibling;
     const books = Store.getBooks();
     books.forEach((book, index) => {
       if (book.isbn === isbn) {
         if (books[index].isRead === "Yes") {
           books[index].isRead = "No";
+          sibling.textContent = "Status: Not Read";
+          parentDiv.style.backgroundImage =
+            "linear-gradient(var(--headone), var(--headtwo))";
         } else {
           books[index].isRead = "Yes";
+          sibling.textContent = "Status: Read";
+          parentDiv.style.backgroundImage =
+            "linear-gradient(var(--headtwo), var(--headone))";
         }
       }
     });
+    localStorage.setItem("books", JSON.stringify(books));
   }
 }
 
 class UI {
   static displayBooks() {
     const books = Store.getBooks();
-
+    if (books.length > 0) {
+      document.querySelector(".display h2").textContent = "Happy Reading :)";
+      if (document.querySelector(".textToRemove")) {
+        document.querySelector(".textToRemove").remove();
+      }
+    }
     books.forEach((book) => UI.addBookToList(book));
   }
 
@@ -75,6 +90,8 @@ class UI {
     status.className = "bookInfo";
     if (book.isRead == "Yes") {
       status.textContent = "Status: Read";
+      newDiv.style.backgroundImage =
+        "linear-gradient(var(--headtwo), var(--headone))";
     } else {
       status.textContent = "Status: Not Read";
     }
@@ -87,11 +104,16 @@ class UI {
     button.className = "removeBook";
     button.textContent = "x";
 
+    let toggle = document.createElement("button");
+    toggle.className = "changeStatus";
+    toggle.textContent = "Toggle";
+
     newDiv.appendChild(infoHeader);
     newDiv.appendChild(bookVar);
     newDiv.appendChild(author);
     newDiv.appendChild(status);
     newDiv.appendChild(uid);
+    newDiv.appendChild(toggle);
     newDiv.appendChild(button);
 
     document.getElementById("books").appendChild(newDiv);
@@ -101,7 +123,6 @@ class UI {
     let div = target.parentElement;
     div.remove();
   }
-
 }
 
 document.addEventListener("DOMContentLoaded", UI.displayBooks);
@@ -156,20 +177,22 @@ function updateLibrary() {
 
 let books = document.getElementById("books");
 books.addEventListener("click", removeItem);
-books.addEventListener("click", removeItem);
+books.addEventListener("click", switchStatus);
 
 function removeItem(event) {
   if (event.target.classList.contains("removeBook")) {
     if (confirm("Are You Sure?")) {
       UI.deleteBook(event.target);
-      Store.removeBook(event.target.previousElementSibling.textContent);
+      Store.removeBook(
+        event.target.previousElementSibling.previousElementSibling.textContent
+      );
     }
   }
 }
 
 function switchStatus(event) {
-  if (event.target.classList.contains("switch")) {
-    UI.changeStatus(event.target);
-    Store.switchStatus(event.target.parentElement.lastElementChild.textContent);
+  if (event.target.classList.contains("changeStatus")) {
+    // UI.changeStatus(event.target);
+    Store.switchStatus(event.target);
   }
 }
