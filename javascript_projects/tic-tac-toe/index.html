@@ -5,26 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./main.js" defer></script>
+    <link rel="stylesheet" href="./syle.css" />
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <!-- to determine whose chance it is, we need to apply a class to the board. X for X, circle for O -->
-    <div class="board" id="board">
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-    </div>
-
-    <div class="winning-message" id="winningMessage">
-      <div data-winning-message-text></div>
-      <button id="restartButton">Restart</button>
-    </div>
+    <section>
+      <div class="header">
+        <h1>Tic-Tac-Toe</h1>
+      </div>
+      <div class="console">
+        <div class="board">
+          <div class="cell" id="0"></div>
+          <div class="cell" id="1"></div>
+          <div class="cell" id="2"></div>
+          <div class="cell" id="3"></div>
+          <div class="cell" id="4"></div>
+          <div class="cell" id="5"></div>
+          <div class="cell" id="6"></div>
+          <div class="cell" id="7"></div>
+          <div class="cell" id="8"></div>
+        </div>
+        <div class="messageBox" id="message-box">
+          <div class="winningMessage">You Win</div>
+          <button id="restart">Play Again</button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
