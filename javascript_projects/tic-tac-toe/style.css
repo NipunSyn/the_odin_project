@@ -6,10 +6,11 @@
 
 :root {
   font-size: 62.5%;
+  --marker-color: #503047;
 }
 
 td {
-  border: 2px solid #333;
+  border: 2px solid var(--marker-color);
   height: 100px;
   width: 100px;
   text-align: center;
@@ -17,6 +18,7 @@ td {
   font-family: "Comic Sans MS", cursive;
   font-size: 70px;
   cursor: pointer;
+  color: var(--marker-color);
 }
 
 table {
