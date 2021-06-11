@@ -12,8 +12,7 @@ const WINNING_COMBINATIONS = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-
-//todo figure out logic to decide difficulty
+let difficultyChoice;
 
 class UI {
   static resetConsole() {
@@ -41,21 +40,27 @@ class UI {
 class Game {
   constructor(circleTurn = false) {
     this.circleTurn = circleTurn;
-    this.choice = null;
   }
 
   static setEasyMode() {
     UI.removePopUp();
-    this.choice = "easy";
+    difficultyChoice = "easy";
+    Game.startGame();
   }
 
   static setHardMode() {
     UI.removePopUp();
-    this.choice = "hard";
+    difficultyChoice = "hard";
+    Game.startGame();
+  }
+
+  static restartGame() {
+    UI.resetConsole();
+    Game.startGame();
   }
 
   static startGame() {
-    UI.resetConsole();
+    // UI.resetConsole();
 
     originalBoard = Array.from(Array(9).keys());
     for (let i = 0; i < cells.length; i++) {
@@ -68,7 +73,7 @@ class Game {
     if (typeof originalBoard[e.target.id] == "number") {
       Game.turn(e.target.id, HUMAN);
       if (!Game.checkWin(originalBoard, HUMAN) && !Game.checkTie()) {
-        setTimeout(() => Game.turn(Game.bestSpot(this.choice), AI), 300);
+        setTimeout(() => Game.turn(Game.bestSpot(difficultyChoice), AI), 300);
       }
     }
   }
@@ -178,9 +183,9 @@ class Game {
   }
 }
 
-Game.startGame();
+// Game.startGame();
 const restart = document.getElementById("restart");
-restart.addEventListener("click", Game.startGame);
+restart.addEventListener("click", Game.restartGame);
 
 const easy = document.getElementById("easy");
 easy.addEventListener("click", Game.setEasyMode);
