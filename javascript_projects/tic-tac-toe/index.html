@@ -6,30 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="./style.css" />
-    <script src="./main.js" defer></script>
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <table>
-      <tr>
-        <td class="cell" id="0"></td>
-        <td class="cell" id="1"></td>
-        <td class="cell" id="2"></td>
-      </tr>
-      <tr>
-        <td class="cell" id="3"></td>
-        <td class="cell" id="4"></td>
-        <td class="cell" id="5"></td>
-      </tr>
-      <tr>
-        <td class="cell" id="6"></td>
-        <td class="cell" id="7"></td>
-        <td class="cell" id="8"></td>
-      </tr>
-    </table>
-    <div class="endgame">
-      <div class="text">Game Over</div>
-      <button id="replay">Replay</button>
-    </div>
-    
+    <section>
+      <div class="header">Tic Tac Toe</div>
+      <div class="console">
+        <div class="board" id="board">
+          <div class="cell" id="0"></div>
+          <div class="cell" id="1"></div>
+          <div class="cell" id="2"></div>
+          <div class="cell" id="3"></div>
+          <div class="cell" id="4"></div>
+          <div class="cell" id="5"></div>
+          <div class="cell" id="6"></div>
+          <div class="cell" id="7"></div>
+          <div class="cell" id="8"></div>
+        </div>
+      </div>
+      <div class="messageBox" id="message-box">
+        <div class="winningMessage"></div>
+        <button id="restart">Replay</button>
+      </div>
+      <div class="popUp">
+        <div>Choose difficulty level</div>
+        <div class="buttonBox">
+          <button id="easy">Beatable</button>
+          <button id="hard">Unbeatable</button>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
