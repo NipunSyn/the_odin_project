@@ -42,15 +42,9 @@ class Game {
     this.circleTurn = circleTurn;
   }
 
-  static setEasyMode() {
+  static setDifficulty(e) {
     UI.removePopUp();
-    difficultyChoice = "easy";
-    Game.startGame();
-  }
-
-  static setHardMode() {
-    UI.removePopUp();
-    difficultyChoice = "hard";
+    difficultyChoice = e.target.id;
     Game.startGame();
   }
 
@@ -188,7 +182,7 @@ const restart = document.getElementById("restart");
 restart.addEventListener("click", Game.restartGame);
 
 const easy = document.getElementById("easy");
-easy.addEventListener("click", Game.setEasyMode);
+easy.addEventListener("click", Game.setDifficulty);
 
 const hard = document.getElementById("hard");
-hard.addEventListener("click", Game.setHardMode);
+hard.addEventListener("click", Game.setDifficulty);
