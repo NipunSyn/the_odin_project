@@ -39,7 +39,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
-      title: "The Bayside Bistro",
+      title: "Capon Lined",
     }),
     new CleanWebpackPlugin(),
   ],
