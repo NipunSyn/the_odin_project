@@ -24,6 +24,7 @@ function footerText() {
 
 export function footer() {
   const footer = document.createElement("footer");
+  footer.id = "footer"
   footer.appendChild(footerText());
 //   footer.appendChild(footerSocial());
 

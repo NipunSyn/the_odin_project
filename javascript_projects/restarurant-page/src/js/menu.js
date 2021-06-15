@@ -14,13 +14,13 @@ function leftDiv(imgSrc, title, desc) {
   h1.innerText = title;
   imgcontainer.appendChild(image);
   miniDiv.appendChild(h1);
-  miniDiv.appendChild(imgcontainer);
   let p1 = document.createElement("p1");
   p1.className = "foodDescription";
   p1.innerText = desc;
+  miniDiv.appendChild(p1);
 
   div.appendChild(miniDiv);
-  div.appendChild(p1);
+  div.appendChild(imgcontainer);
 
   return div;
 }
@@ -39,13 +39,13 @@ function rightDiv(imgSrc, title, desc) {
   h1.innerText = title;
   imgcontainer.appendChild(image);
   miniDiv.appendChild(h1);
-  miniDiv.appendChild(imgcontainer);
   let p1 = document.createElement("p1");
   p1.className = "foodDescription";
   p1.innerText = desc;
-
+  
+  miniDiv.appendChild(p1);
   div.appendChild(miniDiv);
-  div.appendChild(p1);
+  div.appendChild(imgcontainer);
 
   return div;
 }
@@ -53,6 +53,7 @@ function rightDiv(imgSrc, title, desc) {
 export function mainDiv() {
   let containerDiv = document.createElement("div");
   containerDiv.className = "menuBody";
+  containerDiv.id = "menuDiv"
   const images = dataBase();
   for (let i = 0; i < images.length; i++) {
     if (i % 2 != 0) {
