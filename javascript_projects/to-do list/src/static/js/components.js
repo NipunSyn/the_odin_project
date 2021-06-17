@@ -38,13 +38,13 @@ export function aside() {
   aside.classList.add("side-panel");
   aside.id = "aside";
 
-  aside.appendChild(project());
-
   const div = document.createElement("div");
   div.className = "project-div";
   div.id = "addProject";
   div.innerHTML = "+";
   aside.appendChild(div);
+
+  aside.appendChild(project());
 
   const mainDiv = document.createElement("div");
   mainDiv.className = "flex box";
@@ -53,6 +53,13 @@ export function aside() {
   const viewBox = document.createElement("div");
   viewBox.className = "flex view";
   viewBox.id = "viewBox";
+
+   const h1 = document.createElement("h1");
+   h1.id = "projectTitle";
+   h1.className = "project-title";
+   h1.innerText = "Today";
+
+   viewBox.appendChild(h1)
 
   const ul = document.createElement("ul");
   ul.id = "toDoList";
@@ -63,8 +70,8 @@ export function aside() {
   toDoDiv.id = "addToDo";
   toDoDiv.innerHTML = "Add something";
 
-  viewBox.appendChild(ul);
   viewBox.appendChild(toDoDiv);
+  viewBox.appendChild(ul);
 
   mainDiv.appendChild(viewBox);
 
