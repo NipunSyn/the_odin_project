@@ -47,7 +47,17 @@ export function aside() {
   button.innerText = "+";
   div.appendChild(button);
   aside.appendChild(div);
-  return aside;
+
+  const mainDiv = document.createElement("div");
+  mainDiv.className = "flex box";
+  mainDiv.appendChild(aside);
+
+  const viewBox = document.createElement("div");
+  viewBox.className = "flex view";
+  viewBox.id = "viewBox";
+  mainDiv.appendChild(viewBox);
+
+  return mainDiv;
 }
 
 //footer
