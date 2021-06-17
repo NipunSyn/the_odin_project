@@ -1,8 +1,7 @@
 // import component from "./component";
 import "../css/style.css";
-import header from "./header";
-import footer from "./footer";
-import aside from "./aside";
+import { header, aside, footer } from "./components";
+
 
 let container = document.getElementById("content");
 container.appendChild(header());
