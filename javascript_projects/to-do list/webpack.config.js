@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "To-Do List",
+      title: "procrastinain't",
       template: "./src/static/template.html",
     }),
     new CleanWebpackPlugin(),
