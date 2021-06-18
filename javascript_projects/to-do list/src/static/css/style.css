@@ -103,6 +103,7 @@ html {
   min-height: 72.7vh;
   flex-direction: column;
   align-items: flex-start;
+  border-radius: 2.6rem ;
 }
 
 .project-list,

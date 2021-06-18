@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Lat", sans-serif;
+}
+
+
+.bg-modal.project-modal-container,
+.bg-modal.to-do-modal-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content.project-modal {
+  border-radius: 10px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2em;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+input {
+  width: 80%;
+  height: 2rem;
+  margin: 0.8rem auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  color: black;
+  border-radius: 20px;
+  background-color: #98ce00;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0.6rem;
+  font-size: 3rem;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.modal-content.to-do-modal {
+  position: relative;
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white
+}
+
+.form-element {
+  margin: 1rem;
+}
+
+.form-element h2 {
+  font-size: 1rem;
+}
+
+.radio-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  margin-left: 1.2rem;
+}
+
+.radio-buttons input {
+  padding: 1rem;
+}

@@ -7,5 +7,71 @@
   <body>
     <main id="content" class="background">
     </main>
+    <div class="bg-modal project-modal-container" id="projectForm">
+      <div class="modal-content project-modal">
+        <div class="close" id="projectFormClose">+</div>
+        <form id="projectForm">
+          <div class="form-element">
+            <h2 class="label project-name">Project Name</h2>
+            <input id="projectName" type="text" />
+          </div>
+          <div class="form-element"><a href="#" class="btn">Submit</a></div>
+        </form>
+      </div>
+    </div>
+    <div class="bg-modal to-do-modal-container" id="toDoForm">
+      <div class="modal-content to-do-modal">
+        <div class="close" id="toDoFormClose">+</div>
+        <form id="toDoForm">
+          <div class="form-element">
+            <h2 class="label">Title</h2>
+            <input id="toDoName" type="text" />
+          </div>
+          <div class="form-element description-div">
+            <h2 class="label">Description</h2>
+            <input id="toDoDesc" type="text" />
+          </div>
+          <div class="form-element radio-div">
+            <h2 class="label">Priority</h2>
+            <div class="radio-buttons">
+              <div>
+                <input
+                  type="radio"
+                  id="highPriority"
+                  name="priority"
+                  value="highPriority"
+                />
+                <label for="highPriority">High</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="mediumPriority"
+                  name="priority"
+                  value="mediumPriority"
+                />
+                <label for="mediumPriority">Medium</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="lowPriority"
+                  name="priority"
+                  value="lowPriority"
+                />
+                <label for="lowPriority">Low</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-element">
+            <h2 class="label">Due Date</h2>
+            <input type="date" name="date" id="date" />
+          </div>
+          <div class="form-element">
+            <a href="#" class="btn">Submit</a>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
