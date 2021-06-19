@@ -2,8 +2,7 @@
 import "../css/style.css";
 import "../css/form.css";
 import body from "./body";
-import { Project } from "./utility/logic";
-import { ToDo } from "./utility/logic";
+import { Project, Logic } from "./utility/logic";
 import UI from "./utility/ui";
 import { projects } from "./utility/storage";
 body();
@@ -16,6 +15,13 @@ const addproject = document.getElementById("addProject");
 const closeProjectBtn = document.getElementById("projectFormClose");
 const closeToDoBtn = document.getElementById("toDoFormClose");
 const projectAdder = document.getElementById("projectAdder");
+const toDoAdder = document.getElementById("toDoAdder");
+const sidePanel = document.getElementById("aside");
+sidePanel.addEventListener("click", (e) => {
+  if (e.target.innerText != "+") {
+    UI.changeProjectTitle(e.target.innerText);
+  }
+});
 
 // event listeners
 addtodo.addEventListener("click", () => {
@@ -41,10 +47,23 @@ closeToDoBtn.addEventListener("click", () => {
 });
 
 projectAdder.addEventListener("click", () => {
-  const name = document.getElementById("projectName");
+  const name = document.getElementById("projectName").value;
   const newProject = new Project(name);
   projects.push(newProject);
-  console.log(projects);
+  UI.changeSidePanel(name);
+  document.querySelector("#projectForm").reset();
+  document.querySelector(".bg-modal.project-modal-container").style.display =
+    "none";
 });
 
-//functions
+toDoAdder.addEventListener("click", () => {
+  Logic.addToDoFunc();
+  document.querySelector("#toDoForm").reset();
+  document.querySelector(".bg-modal.to-do-modal-container").style.display =
+    "none";
+  UI.changeToDoList();
+});
+
+//todo make todolist divs
+//todo add todo to the correct project title
+//todo integrate with storage

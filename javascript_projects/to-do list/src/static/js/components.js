@@ -24,7 +24,7 @@ function project() {
   const p = document.createElement("p");
   p.classList.add("project-name");
   p.innerText = "Today";
-
+  minidiv.id = "Today";
   minidiv.appendChild(p);
   li.appendChild(minidiv);
   ul.appendChild(li);
