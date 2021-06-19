@@ -61,7 +61,6 @@ toDoAdder.addEventListener("click", () => {
   document.querySelector("#toDoForm").reset();
   document.querySelector(".bg-modal.to-do-modal-container").style.display =
     "none";
-  UI.changeToDoList();
 });
 
 //todo make todolist divs
