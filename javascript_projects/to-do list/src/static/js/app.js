@@ -1,6 +1,7 @@
 // importing body and style sheet
 import "../css/style.css";
 import "../css/form.css";
+
 import body from "./body";
 import { Project, Logic } from "./utility/logic";
 import UI from "./utility/ui";
@@ -21,12 +22,21 @@ const sidePanel = document.getElementById("aside");
 // event listeners
 
 document.addEventListener("DOMContentLoaded", UI.displayProjects);
+document.addEventListener("DOMContentLoaded", UI.displayToDos);
 
 sidePanel.addEventListener("click", (e) => {
-  if (e.target.innerText != "+") {
+  if (e.target.innerText != "+" && e.target.className != "flex side-panel") {
     UI.changeProjectTitle(e.target.innerText);
     UI.clearToDos();
     UI.displayToDos();
+  }
+});
+
+sidePanel.addEventListener("click", (e) => {
+  if (e.target.classList.contains("close-tag")) {
+    UI.removeProject(e.target);
+    console.log(e.target.previousElementSibling.innerText)
+    Storage.removeProject(e.target.previousElementSibling.innerText);
   }
 });
 
@@ -69,6 +79,8 @@ toDoAdder.addEventListener("click", () => {
     "none";
 });
 
-//todo make todolist divs
-//todo add todo to the correct project title
-//todo integrate with storage
+//todo design to-do div
+//todo design close button
+//todo add functionality to the toggle button (complete, not complete)
+//todo add buttons to remove entire project
+//todo make everything functional

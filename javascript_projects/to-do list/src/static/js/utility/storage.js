@@ -19,7 +19,7 @@ export default class Storage {
 
   static removeProject(projectName) {
     const projects = Storage.getProjects();
-    projects.forEach(project, (index) => {
+    projects.forEach((project, index) => {
       if (projectName === project.name) {
         projects.splice(index, 1);
       }
@@ -29,8 +29,12 @@ export default class Storage {
 
   static addToDo(toDo) {
     const projects = Storage.getProjects();
-    const projectName = document.getElementById("projectTitle");
+    const projectName = document.getElementById("projectTitle").innerText;
+
+    // console.log("Title: ", projectName)
     projects.forEach((project) => {
+      // console.log("Project: ", project.name)
+      console.log(project.name);
       if (project.name === projectName) {
         project.todoList.push(toDo);
       }

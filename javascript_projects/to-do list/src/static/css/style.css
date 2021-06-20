@@ -38,7 +38,9 @@ html {
 .header {
   background-image: linear-gradient(to right, #434343 0%, black 100%);
   width: 100%;
-  justify-content: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: white;
 }
 
@@ -113,6 +115,10 @@ html {
 }
 
 .project-div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   /* padding: 1rem; */
   cursor: pointer;
@@ -161,8 +167,9 @@ li {
 }
 
 .to-do-div {
+  position: relative;
   width: 100%;
-  min-height: 8em;
+  height: 8em;
   padding: 2rem;
   /* cursor: pointer; */
   margin-bottom: 0.5rem;
@@ -170,7 +177,7 @@ li {
   font-size: 1.6rem;
   background-color: rgb(0, 0, 0, 0.1);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -178,7 +185,6 @@ li {
   background-color: #98ce00;
   font-weight: 700;
   width: 100%;
-  min-height: auto;
   height: auto;
   padding: 1.3rem;
   cursor: pointer;
@@ -205,7 +211,8 @@ li {
 
 .title-1 {
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
 }
 
 .text- {
@@ -214,18 +221,52 @@ li {
 }
 
 .small-div {
+  text-align: center;
+  width: 22%;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
 }
 
 .close-tag {
   display: block;
-  border: 1px solid black;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  border: none;
+  padding: 0;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 2.6rem;
+  background-color: transparent;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+  right: 1rem;
+}
+
+.close-tag:hover {
+  color: rgb(199, 12, 12);
+}
+
+.change-priority {
+  padding: 0.8rem 1.4rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(136, 174, 245);
+}
+
+.btn-add {
+  border: none;
+  border-radius: 5px;
+  display: block;
+  cursor: pointer;
+  padding: 0.8rem 1.4rem;
+  background-color: #98ce00;
+
+}
+
+.btn-add:hover,
+.change-priority:hover{
+  transform: scale(0.98);
 }

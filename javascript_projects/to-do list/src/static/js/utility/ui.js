@@ -9,7 +9,7 @@ export default class UI {
 
   static clearToDos() {
     const ul = document.getElementById("toDoList");
-    const todolist = ul.querySelectorAll("li")
+    const todolist = ul.querySelectorAll("li");
     todolist.forEach((todo) => {
       console.log("helloooo");
       todo.remove();
@@ -24,7 +24,7 @@ export default class UI {
   }
 
   static displayToDos() {
-    const projectName = document.getElementById("projectTitle")
+    const projectName = document.getElementById("projectTitle").innerText;
     const projects = Storage.getProjects();
     projects.forEach((project) => {
       if (project.name === projectName) {
@@ -45,9 +45,12 @@ export default class UI {
     const p = document.createElement("p");
     p.classList.add("project-name");
     p.innerText = newProject;
+    const button_3 = document.createElement("button");
+    button_3.innerHTML = "+";
+    button_3.className = "close-tag";
 
-    div.id = newProject;
     div.appendChild(p);
+    div.appendChild(button_3);
     li.appendChild(div);
     ul.appendChild(li);
   }
@@ -79,7 +82,8 @@ export default class UI {
     h1_2.textContent = toDo.priority;
     h1_2.className = "title-1";
     const button = document.createElement("button");
-    button.innerHTML = "change";
+    button.innerHTML = "Change";
+    button.className = "change-priority";
     div2.appendChild(h1_2);
     div2.appendChild(button);
     div2.classList.add("small-div");
@@ -91,11 +95,11 @@ export default class UI {
     div3.classList.add("small-div");
 
     const button_2 = document.createElement("button");
-    button_2.innerHTML = "done";
-    button_2.classList.add("close-tag");
+    button_2.innerHTML = "Done";
+    button_2.className = "btn-add";
     const button_3 = document.createElement("button");
     button_3.innerHTML = "+";
-    button_3.classList.add("close-tag");
+    button_3.className = "close-tag";
     div4.appendChild(button_2);
     div4.appendChild(button_3);
     div4.classList.add("small-div");
@@ -106,13 +110,17 @@ export default class UI {
     mainDiv.appendChild(div4);
     mainDiv.classList.add("to-do-div");
 
-    const li = document.createElement("li")
-    li.appendChild(mainDiv)
+    const li = document.createElement("li");
+    li.appendChild(mainDiv);
 
     document.getElementById("toDoList").appendChild(li);
   }
 
   static changeProjectTitle(name) {
     document.getElementById("projectTitle").innerHTML = name;
+  }
+
+  static removeProject(target) {
+    target.parentElement.parentElement.remove();
   }
 }
