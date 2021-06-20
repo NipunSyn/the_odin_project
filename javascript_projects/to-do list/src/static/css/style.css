@@ -156,6 +156,10 @@ html {
   flex-wrap: wrap;
 }
 
+li {
+  width:  100%;
+}
+
 .to-do-div {
   width: 100%;
   min-height: 8em;

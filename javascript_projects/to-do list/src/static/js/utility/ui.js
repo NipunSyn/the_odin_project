@@ -8,8 +8,9 @@ export default class UI {
   }
 
   static clearToDos() {
-    const todoList = document.getElementById("toDoList");
-    todoList.forEach((todo) => {
+    const ul = document.getElementById("toDoList");
+    const todolist = ul.querySelectorAll("li")
+    todolist.forEach((todo) => {
       console.log("helloooo");
       todo.remove();
     });
@@ -105,7 +106,10 @@ export default class UI {
     mainDiv.appendChild(div4);
     mainDiv.classList.add("to-do-div");
 
-    document.getElementById("toDoList").appendChild(mainDiv);
+    const li = document.createElement("li")
+    li.appendChild(mainDiv)
+
+    document.getElementById("toDoList").appendChild(li);
   }
 
   static changeProjectTitle(name) {
