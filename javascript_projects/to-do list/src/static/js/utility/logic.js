@@ -1,10 +1,10 @@
 import UI from "./ui";
-
-const toDos = [];
+import Storage from "./storage";
 
 export class Project {
   constructor(name) {
     this.name = name;
+    this.todoList = []
   }
 }
 
@@ -34,8 +34,8 @@ export class Logic {
     const dueDate = new Date(date);
 
     const toDo = new ToDo(title, description, priority, dueDate);
-    toDos.push(toDo);
-
+    
+    Storage.addToDo(toDo)
     UI.changeToDoList(toDo)
   }
 }

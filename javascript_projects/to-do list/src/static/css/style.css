@@ -160,7 +160,7 @@ html {
   width: 100%;
   min-height: 8em;
   padding: 2rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   margin-bottom: 0.5rem;
   border-radius: 10px;
   font-size: 1.6rem;
@@ -215,4 +215,13 @@ html {
   justify-content: space-between;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.close-tag {
+  display: block;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
 }

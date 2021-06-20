@@ -17,17 +17,6 @@ function project() {
   const ul = document.createElement("ul");
   ul.id = "projectList";
   ul.classList.add("project-list");
-  const li = document.createElement("li");
-  li.classList.add("project");
-  const minidiv = document.createElement("div");
-  minidiv.classList.add("project-div");
-  const p = document.createElement("p");
-  p.classList.add("project-name");
-  p.innerText = "Today";
-  minidiv.id = "Today";
-  minidiv.appendChild(p);
-  li.appendChild(minidiv);
-  ul.appendChild(li);
 
   return ul;
 }
