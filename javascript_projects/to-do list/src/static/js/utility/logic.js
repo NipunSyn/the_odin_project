@@ -4,7 +4,7 @@ import Storage from "./storage";
 export class Project {
   constructor(name) {
     this.name = name;
-    this.todoList = []
+    this.todoList = [];
   }
 }
 
@@ -30,12 +30,11 @@ export class Logic {
         break;
       }
     }
-    const date = document.getElementById("date").value;
-    const dueDate = new Date(date);
+    const date = document.getElementById("date").value
 
-    const toDo = new ToDo(title, description, priority, dueDate);
-    
-    Storage.addToDo(toDo)
-    UI.changeToDoList(toDo)
+    const toDo = new ToDo(title, description, priority, date);
+
+    Storage.addToDo(toDo);
+    UI.changeToDoList(toDo);
   }
 }

@@ -18,6 +18,7 @@ const closeToDoBtn = document.getElementById("toDoFormClose");
 const projectAdder = document.getElementById("projectAdder");
 const toDoAdder = document.getElementById("toDoAdder");
 const sidePanel = document.getElementById("aside");
+const viewBox = document.getElementById("viewBox");
 
 // event listeners
 
@@ -34,9 +35,12 @@ sidePanel.addEventListener("click", (e) => {
 
 sidePanel.addEventListener("click", (e) => {
   if (e.target.classList.contains("close-tag")) {
-    UI.removeProject(e.target);
-    console.log(e.target.previousElementSibling.innerText)
-    Storage.removeProject(e.target.previousElementSibling.innerText);
+
+    if(confirm("Are you sure?")) {
+      UI.removeProject(e.target);
+      Storage.removeProject(e.target.previousElementSibling.innerText);
+    }
+    
   }
 });
 
@@ -72,6 +76,19 @@ projectAdder.addEventListener("click", () => {
     "none";
 });
 
+viewBox.addEventListener("click", (e) => {
+  if (e.target.classList.contains("close-tag")) {
+    if (confirm("Are you sure?")) {
+      UI.removeToDo(e.target)
+      const projName = document.getElementById("projectTitle").innerText
+      const todoTitle = e.target.parentElement.parentElement.firstElementChild.firstElementChild.innerText
+      console.log(todoTitle)
+      console.log(projName)
+      Storage.removeToDo(projName, todoTitle)
+    }
+  }
+})
+
 toDoAdder.addEventListener("click", () => {
   Logic.addToDoFunc();
   document.querySelector("#toDoForm").reset();
@@ -79,8 +96,15 @@ toDoAdder.addEventListener("click", () => {
     "none";
 });
 
-//todo design to-do div
-//todo design close button
-//todo add functionality to the toggle button (complete, not complete)
-//todo add buttons to remove entire project
-//todo make everything functional
+viewBox.addEventListener("click", (e) => {
+  const item = e.target
+  if(item.classList.contains("btn-done"))
+  {const div = item.parentElement.parentElement
+  div.classList.toggle("doneTask")
+  }
+})
+
+
+
+
+

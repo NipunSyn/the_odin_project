@@ -45,10 +45,11 @@ export default class Storage {
   static removeToDo(projectName, toDo) {
     const projects = Storage.getProjects();
     projects.forEach((project) => {
-      if (project.name == projectName) {
+      if (project.name === projectName) {
+        console.log(project.name === projectName);
         const todoList = project.todoList;
-        todoList.forEach(todo, (index) => {
-          if (todo.title == toDo.title) {
+        todoList.forEach((todo, index) => {
+          if (todo.title == toDo) {
             todoList.splice(index, 1);
           }
         });

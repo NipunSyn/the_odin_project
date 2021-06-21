@@ -163,7 +163,7 @@ html {
 }
 
 li {
-  width:  100%;
+  width: 100%;
 }
 
 .to-do-div {
@@ -263,10 +263,14 @@ li {
   cursor: pointer;
   padding: 0.8rem 1.4rem;
   background-color: #98ce00;
-
 }
 
 .btn-add:hover,
-.change-priority:hover{
+.change-priority:hover {
   transform: scale(0.98);
+}
+
+.doneTask {
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0.5;
 }

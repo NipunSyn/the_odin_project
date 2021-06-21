@@ -70,7 +70,7 @@ export default class UI {
 
     const h1_1 = document.createElement("h2");
     h1_1.textContent = toDo.title;
-    h1_1.className = "title-1";
+    h1_1.className = "title-1 get-title";
     const p = document.createElement("p");
     p.textContent = toDo.description;
     p.className = "text-1";
@@ -79,24 +79,36 @@ export default class UI {
     div1.classList.add("small-div");
 
     const h1_2 = document.createElement("h2");
-    h1_2.textContent = toDo.priority;
+    h1_2.textContent = "Priority:";
+    const p1 = document.createElement("p");
+    p1.textContent =
+      toDo.priority == "highPriority"
+        ? "High"
+        : toDo.priority == "mediumPriority"
+        ? "Medium"
+        : "Low";
     h1_2.className = "title-1";
-    const button = document.createElement("button");
-    button.innerHTML = "Change";
-    button.className = "change-priority";
+    // const button = document.createElement("button");
+    // button.innerHTML = "Change";
+    // button.className = "change-priority";
     div2.appendChild(h1_2);
-    div2.appendChild(button);
+    div2.appendChild(p1);
+    // div2.appendChild(button);
     div2.classList.add("small-div");
 
     const h1_3 = document.createElement("h1");
-    h1_3.textContent = toDo.dueDate;
+    const p2 = document.createElement("p");
+    p2.textContent = toDo.dueDate;
+    h1_3.textContent = "Due on:";
     h1_3.className = "title-1";
+
     div3.appendChild(h1_3);
+    div3.appendChild(p2);
     div3.classList.add("small-div");
 
     const button_2 = document.createElement("button");
     button_2.innerHTML = "Done";
-    button_2.className = "btn-add";
+    button_2.className = "btn-add btn-done";
     const button_3 = document.createElement("button");
     button_3.innerHTML = "+";
     button_3.className = "close-tag";
@@ -121,6 +133,10 @@ export default class UI {
   }
 
   static removeProject(target) {
+    target.parentElement.parentElement.remove();
+  }
+
+  static removeToDo(target) {
     target.parentElement.parentElement.remove();
   }
 }
