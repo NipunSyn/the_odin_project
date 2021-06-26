@@ -3,7 +3,6 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-  height: 100%;
 }
 
 *,
@@ -23,11 +22,15 @@ body {
 
 .container {
   padding: 1.6rem;
+  height: 100%;
+  position: relative;
 }
 
 .bg {
+  background-color: black;
   background-image: url("../images/background.jpg");
   height: 100%;
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,7 +41,6 @@ a:active,
 a:visited {
   text-decoration: none;
 }
-
 
 .flex {
   display: flex;

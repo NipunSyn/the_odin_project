@@ -1,0 +1,18 @@
+.card {
+  flex-direction: column;
+  margin: 0 1.6rem;
+  width: 30%;
+  height: 69vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+}
+
+.forecast {
+  flex-direction: column;
+  flex: 1;
+  margin: 0 1.6rem;
+  width: 30%;
+  height: 69vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 1rem;
+}
