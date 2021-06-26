@@ -1,0 +1,41 @@
+header h1 {
+  font-size: 3rem;
+}
+
+.search-box {
+  background-color: #060708;
+  height: 6rem;
+  border-radius: 6rem;
+  padding: 1rem;
+}
+
+
+.search-btn {
+  color: #e84118;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.search-box:hover > .search-btn {
+    background: white;
+}
+
+.search-text {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  color: white;
+  font-size: 1.2rem;
+  transition: 500ms;
+  line-height: 6rem;
+  width: 0rem;
+}
+
+
+.search-box:hover > .search-text {
+  width: 10rem;
+  padding: 0 0.6rem;
+}
