@@ -13,10 +13,13 @@ function proceed() {
   const city = getValue();
   console.log(city);
   if (city) {
-    const temp = getTemp(city).resolve((data) => {
-      return data;
-    });
-    console.log(temp);
+    getTemp(city)
+      .then((data) => {
+        console.log("resolved", data);
+      })
+      .catch((err) => {
+        console.log("unresolved", err);
+      });
   }
 }
 
@@ -29,11 +32,11 @@ function getValue() {
   }
 }
 
-async function getTemp(city = "London") {
+async function getTemp(city) {
   const response = await fetch(
     `api.openweathermap.org/data/2.5/weather?q=${city}&appid=982ec374a029fba11ec7688f37ca3b94`
   );
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw new Error("Couldn't Fetch Data");
   }
 
