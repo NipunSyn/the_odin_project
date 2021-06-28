@@ -1,45 +1,16 @@
 import "../css/style.css";
+import Weather from "./weather";
 
-//buttons
-const button = document.getElementById("searchButton");
-const display = document.getElementById("temperature");
+document.addEventListener("DOMContentLoaded", () => {
+  Weather.fetchWeather("New York");
+});
 
-//eventListeners
-button.addEventListener("click", proceed);
+document.querySelector(".search-btn").addEventListener("click", () => {
+  Weather.search();
+});
 
-//functions
-
-function proceed() {
-  const city = getValue();
-  console.log(city);
-  if (city) {
-    getTemp(city)
-      .then((data) => {
-        console.log("resolved", data);
-      })
-      .catch((err) => {
-        console.log("unresolved", err);
-      });
+document.querySelector(".search-text").addEventListener("keyup", (event) => {
+  if (event.key == "Enter") {
+    Weather.search();
   }
-}
-
-function getValue() {
-  const inputBox = document.getElementById("searchValue");
-  if (inputBox.value) {
-    const input = inputBox.value;
-    inputBox.value = "";
-    return input;
-  }
-}
-
-async function getTemp(city) {
-  const response = await fetch(
-    `api.openweathermap.org/data/2.5/weather?q=${city}&appid=982ec374a029fba11ec7688f37ca3b94`
-  );
-  if (response.status !== 200) {
-    throw new Error("Couldn't Fetch Data");
-  }
-
-  const data = await response.json();
-  return data;
-}
+});
