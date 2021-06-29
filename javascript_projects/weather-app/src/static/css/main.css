@@ -31,3 +31,11 @@
 .weather-div h1 {
   cursor: pointer;
 }
+
+@media (max-width: 750px) {
+  .card {
+    width: 90%;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+  }
+}

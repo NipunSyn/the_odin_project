@@ -17,4 +17,6 @@ document.querySelector(".search-text").addEventListener("keyup", (event) => {
 
 document.querySelector(".weather-div").addEventListener("click", Weather.changeMetrics);
 
+document.querySelector(".search-text").setPointerCapture(e.pointerId)
+
 //functions 
