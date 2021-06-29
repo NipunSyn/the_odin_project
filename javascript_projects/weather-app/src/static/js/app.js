@@ -14,3 +14,7 @@ document.querySelector(".search-text").addEventListener("keyup", (event) => {
     Weather.search();
   }
 });
+
+document.querySelector(".weather-div").addEventListener("click", Weather.changeMetrics);
+
+//functions 

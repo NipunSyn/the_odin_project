@@ -26,5 +26,8 @@
   height: 80%;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.weather-div h1 {
   cursor: pointer;
 }
